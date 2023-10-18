@@ -1,18 +1,15 @@
-<!doctype html>
-<html>
-<meta charset="utf-8">
-<body>
 {% extends 'base.html.twig' %}
-{% block title %}Contactos{% endblock %}
-{% body %}
-    <h1>Listado de contactos</h1>
-     {% for contacto in contactos %}
-   {{ include ('datos_contacto.html.twig', {'contacto': contacto}) }}
 
-    {% endfor %}
+{% block title %}Contactos{% endblock %}
+
+{% block body %}
+    <h1>Listado de contactos</h1>
+
+    {% if contactos is not empty %}
+        {% for contacto in contactos %}
+            {{ include('datos_contacto.html.twig', {'contacto': contacto}) }}
+        {% endfor %}
     {% else %}
-    <p>No se han encontrado contactos</p>
+        <p>No se han encontrado contactos</p>
     {% endif %}
-    {% endblock %}
-</body>
-</html>
+{% endblock %}
